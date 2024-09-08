@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6153] on 20 March 2024 at 4:29:01 pm'!
+'From Cuis7.1 [latest update: #6676] on 7 September 2024 at 9:43:23 pm'!
 'Description '!
-!provides: 'LayoutAlgebra' 1 8!
+!provides: 'LayoutAlgebra' 1 9!
 SystemOrganization addCategory: #LayoutAlgebra!
 
 
@@ -73,14 +73,6 @@ changeWidthOf: aMorph
 
 	aMorph layoutSpec proportionalWidth: quantity. ^aMorph! !
 
-!Number methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:41:52'!
-f
-	^ FixedQuantity new value: self ; yourself! !
-
-!Number methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:42:11'!
-p
-	^ ProportionalQuantity new value: self ; yourself! !
-
 !Collection methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 16:21:39'!
 morph
 
@@ -90,10 +82,18 @@ morph
 morph
 	^TextModelMorph withText: self! !
 
-!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 19:18:55'!
+!Number methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:41:52'!
+f
+	^ FixedQuantity new value: self ; yourself! !
+
+!Number methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:42:11'!
+p
+	^ ProportionalQuantity new value: self ; yourself! !
+
+!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 9/7/2024 21:22:43'!
 + aPlacedMorph
 
-	^LayoutMorph new beRow addMorph: self ; addMorph: aPlacedMorph ; yourself
+	^LayoutMorph newRow addMorph: self ; addMorph: aPlacedMorph ; yourself
 	! !
 
 !PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:48:44'!
@@ -101,22 +101,22 @@ morph
 
 	^ aQuantity changeWidthOf: self! !
 
-!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 19:19:14'!
+!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 9/7/2024 21:43:05'!
 / aPlacedMorph
 
-	^LayoutMorph new beColumn addMorph: self ; addMorph: aPlacedMorph ; yourself
+	^LayoutMorph newColumn addMorph: self ; addMorph: aPlacedMorph ; yourself
 	! !
 
-!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 21:56:14'!
+!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 9/7/2024 21:43:09'!
 <+> aPlacedMorph
 
-	^LayoutMorph new beRow addMorph: self ; addAdjusterMorph ; addMorph: aPlacedMorph ; yourself
+	^LayoutMorph newRow addMorph: self ; addAdjusterMorph ; addMorph: aPlacedMorph ; yourself
 	! !
 
-!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 21:56:31'!
+!PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 9/7/2024 21:43:13'!
 </> aPlacedMorph
 
-	^LayoutMorph new beColumn addMorph: self ; addAdjusterMorph; addMorph: aPlacedMorph ; yourself
+	^LayoutMorph newColumn addMorph: self ; addAdjusterMorph; addMorph: aPlacedMorph ; yourself
 	! !
 
 !PlacedMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:50:05'!
