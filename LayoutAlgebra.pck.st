@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6676] on 7 September 2024 at 9:43:23 pm'!
+'From Cuis7.1 [latest update: #6709] on 30 September 2024 at 3:38:25 pm'!
 'Description '!
-!provides: 'LayoutAlgebra' 1 9!
+!provides: 'LayoutAlgebra' 1 12!
 SystemOrganization addCategory: #LayoutAlgebra!
 
 
@@ -73,10 +73,14 @@ changeWidthOf: aMorph
 
 	aMorph layoutSpec proportionalWidth: quantity. ^aMorph! !
 
-!Collection methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 16:21:39'!
+!Collection methodsFor: '*LayoutAlgebra' stamp: 'DF 9/23/2024 12:43:01'!
 morph
 
-	^PluggableListMorph model: self listGetter: #yourself indexGetter: nil indexSetter: nil	! !
+	^PluggableListMorph withModel: self listGetter: #yourself indexGetter: nil indexSetter: nil	! !
+
+!CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 9/30/2024 14:59:04'!
+button
+	^(PluggableButtonMorph model: (Switch new) stateGetter: nil action: #switch) label:self! !
 
 !CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 16:26:01'!
 morph
@@ -163,12 +167,12 @@ pw: aNumber
 		ifFalse:[^LayoutMorph new beRow addMorph: self ; addMorph: aPlacedMorph ; yourself]
 	! !
 
-!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 19:35:08'!
+!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 9/30/2024 14:56:57'!
 / aPlacedMorph
 
 	self isColumn
 		ifTrue:[self addMorph: aPlacedMorph. ^self]
-		ifFalse:[^LayoutMorph new beColumn addMorph: self ; addMorph: aPlacedMorph ; yourself]
+		ifFalse:[^LayoutMorph newColumn addMorph: self ; addMorph: aPlacedMorph ; yourself]
 	! !
 
 !LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 22:01:32'!
