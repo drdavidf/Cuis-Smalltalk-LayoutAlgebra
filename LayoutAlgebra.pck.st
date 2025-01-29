@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6709] on 30 September 2024 at 3:38:25 pm'!
+'From Cuis7.3 [latest update: #6895] on 29 January 2025 at 11:20:22 am'!
 'Description '!
-!provides: 'LayoutAlgebra' 1 12!
+!provides: 'LayoutAlgebra' 1 13!
 SystemOrganization addCategory: #LayoutAlgebra!
 
 
