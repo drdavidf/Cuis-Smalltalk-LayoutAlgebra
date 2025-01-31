@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6676] on 3 October 2024 at 11:58:20 pm'!
+'From Cuis7.1 [latest update: #6676] on 19 January 2025 at 6:23:40 pm'!
 'Description '!
-!provides: 'LayoutAlgebra' 1 10!
+!provides: 'LayoutAlgebra' 1 11!
 SystemOrganization addCategory: #LayoutAlgebra!
 
 
@@ -78,13 +78,21 @@ morph
 
 	^PluggableListMorph withModel: self listGetter: #yourself indexGetter: nil indexSetter: nil	! !
 
-!CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 16:26:01'!
+!CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 1/5/2025 17:27:53'!
+edit
+	^TextEntryMorph contents: self! !
+
+!CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2025 19:30:23'!
 morph
-	^TextModelMorph withText: self! !
+	^LabelMorph contents: self! !
 
 !Number methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:41:52'!
 f
 	^ FixedQuantity new value: self ; yourself! !
+
+!Number methodsFor: '*LayoutAlgebra' stamp: 'DF 1/5/2025 18:43:24'!
+morph
+	^LabelMorph contents: ('{1}' format:{self})! !
 
 !Number methodsFor: '*LayoutAlgebra' stamp: 'DF 3/20/2024 15:42:11'!
 p
@@ -155,12 +163,12 @@ pw: aNumber
 
 	self layoutSpec proportionalWidth: aNumber. ^self! !
 
-!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 19:23:40'!
+!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 12/27/2024 17:40:08'!
 + aPlacedMorph
 
 	self isRow 
 		ifTrue:[self addMorph: aPlacedMorph. ^self]
-		ifFalse:[^LayoutMorph new beRow addMorph: self ; addMorph: aPlacedMorph ; yourself]
+		ifFalse:[^LayoutMorph newRow addMorph: self ; addMorph: aPlacedMorph ; yourself]
 	! !
 
 !LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 10/3/2024 23:29:28'!
@@ -171,20 +179,20 @@ pw: aNumber
 		ifFalse:[^LayoutMorph newColumn addMorph: self ; addMorph: aPlacedMorph ; yourself]
 	! !
 
-!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 22:01:32'!
+!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 12/27/2024 17:40:01'!
 <+> aPlacedMorph
 
 	self isRow 
 		ifTrue:[self addAdjusterMorph; addMorph: aPlacedMorph. ^self]
-		ifFalse:[^LayoutMorph new beRow addMorph: self ; addAdjusterMorph; addMorph: aPlacedMorph ; yourself]
+		ifFalse:[^LayoutMorph newRow addMorph: self ; addAdjusterMorph; addMorph: aPlacedMorph ; yourself]
 	! !
 
-!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 21:58:24'!
+!LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 12/27/2024 17:39:51'!
 </> aPlacedMorph
 
 	self isColumn
 		ifTrue:[self addAdjusterMorph; addMorph: aPlacedMorph. ^self]
-		ifFalse:[^LayoutMorph new beColumn addMorph: self ; addAdjusterMorph;  addMorph: aPlacedMorph ; yourself]
+		ifFalse:[^LayoutMorph newColumn addMorph: self ; addAdjusterMorph;  addMorph: aPlacedMorph ; yourself]
 	! !
 
 !LayoutMorph methodsFor: '*LayoutAlgebra' stamp: 'DF 1/4/2024 19:26:30'!
