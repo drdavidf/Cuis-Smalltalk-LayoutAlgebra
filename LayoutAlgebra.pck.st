@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6676] on 19 January 2025 at 6:23:40 pm'!
+'From Cuis7.1 [latest update: #7041] on 31 January 2025 at 12:27:37 pm'!
 'Description '!
-!provides: 'LayoutAlgebra' 1 11!
+!provides: 'LayoutAlgebra' 1 12!
 SystemOrganization addCategory: #LayoutAlgebra!
 
 
@@ -77,6 +77,10 @@ changeWidthOf: aMorph
 morph
 
 	^PluggableListMorph withModel: self listGetter: #yourself indexGetter: nil indexSetter: nil	! !
+
+!CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 9/30/2024 14:59:04'!
+button
+	^(PluggableButtonMorph model: (Switch new) stateGetter: nil action: #switch) label:self! !
 
 !CharacterSequence methodsFor: '*LayoutAlgebra' stamp: 'DF 1/5/2025 17:27:53'!
 edit
